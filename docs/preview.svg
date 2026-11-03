@@ -1,0 +1,185 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700" role="img" aria-label="dsh-note-wall 界面示意：左侧栏入口与便签墙页面">
+  <defs>
+    <linearGradient id="app-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#fbfaf8"/>
+    </linearGradient>
+    <filter id="n-shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#8a6d3b" flood-opacity="0.13"/>
+    </filter>
+    <clipPath id="app-clip">
+      <rect width="1200" height="700" rx="16"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#app-clip)">
+    <rect width="1200" height="700" fill="url(#app-bg)"/>
+
+    <!-- ============ window chrome ============ -->
+    <rect x="0" y="0" width="1200" height="40" fill="#f2efe9"/>
+    <circle cx="24" cy="20" r="5" fill="#e0b6ac"/>
+    <circle cx="42" cy="20" r="5" fill="#e7d3a8"/>
+    <circle cx="60" cy="20" r="5" fill="#b9d3b3"/>
+    <text x="600" y="25" text-anchor="middle" font-family="'Microsoft YaHei','PingFang SC',sans-serif" font-size="12" fill="#8a8072">DeepSeek Harness · 便签墙</text>
+
+    <!-- ============ sidebar ============ -->
+    <rect x="0" y="40" width="76" height="660" fill="#f7f4ef"/>
+    <line x1="76" y1="40" x2="76" y2="700" stroke="#e6ded2"/>
+
+    <!-- brand -->
+    <circle cx="38" cy="76" r="14" fill="#1b2430"/>
+    <text x="38" y="81" text-anchor="middle" font-family="'SF Mono',monospace" font-size="13" font-weight="700" fill="#ffd979">d</text>
+
+    <!-- rail: plugins -->
+    <g transform="translate(24 122)" fill="none" stroke="#b6a894" stroke-width="1.7">
+      <rect x="0" y="0" width="28" height="28" rx="7"/>
+      <circle cx="14" cy="14" r="5"/>
+    </g>
+
+    <!-- rail: schedules -->
+    <g transform="translate(25 178)" fill="none" stroke="#b6a894" stroke-width="1.7" stroke-linecap="round">
+      <rect x="0" y="0" width="26" height="26" rx="6"/>
+      <path d="M7 0v-5M19 0v-5"/>
+    </g>
+
+    <!-- rail: context -->
+    <g transform="translate(24 234)" fill="none" stroke="#b6a894" stroke-width="1.7">
+      <circle cx="14" cy="14" r="13"/>
+    </g>
+
+    <!-- ===== note wall — ACTIVE ===== -->
+    <rect x="18" y="276" width="40" height="40" rx="10" fill="#fbeecb"/>
+    <g transform="translate(27 285)" fill="none" stroke="#7a5a12" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M5 4h14v10l-5 6H5z"/>
+      <path d="M14 20v-5h5"/>
+      <path d="M8.5 8.5h7"/>
+      <path d="M8.5 11.5h4.5"/>
+    </g>
+    <rect x="0" y="276" width="4" height="40" rx="2" fill="#7a5a12"/>
+    <text x="38" y="336" text-anchor="middle" font-family="'Microsoft YaHei','PingFang SC',sans-serif" font-size="10" fill="#7a5a12">便签</text>
+
+    <!-- settings -->
+    <g transform="translate(27 648)" fill="none" stroke="#b6a894" stroke-width="1.7">
+      <circle cx="11" cy="11" r="10"/>
+      <circle cx="11" cy="11" r="3.4"/>
+    </g>
+
+    <!-- ============ header ============ -->
+    <text x="108" y="80" font-family="'Microsoft YaHei','PingFang SC',sans-serif" font-size="17" font-weight="700" fill="#1b2430">便签墙</text>
+    <rect x="176" y="64" width="46" height="21" rx="10" fill="#f1ece3"/>
+    <text x="199" y="79" text-anchor="middle" font-family="'Microsoft YaHei','PingFang SC',sans-serif" font-size="11" fill="#7d6f5c">5 条</text>
+
+    <rect x="812" y="60" width="176" height="32" rx="8" fill="#ffffff" stroke="#e2d9cc"/>
+    <g transform="translate(830 68)" fill="none" stroke="#a89880" stroke-width="1.5">
+      <circle cx="5" cy="5" r="5"/>
+      <path d="M9 9l4 4" stroke-linecap="round"/>
+    </g>
+    <text x="852" y="81" font-family="'Microsoft YaHei','PingFang SC',sans-serif" font-size="12" fill="#a89880">搜索便签…</text>
+
+    <rect x="1000" y="60" width="92" height="32" rx="8" fill="#247bbf"/>
+    <text x="1046" y="81" text-anchor="middle" font-family="'Microsoft YaHei','PingFang SC',sans-serif" font-size="12.5" font-weight="600" fill="#ffffff">新便签</text>
+
+    <rect x="1104" y="60" width="68" height="32" rx="8" fill="#ffffff" stroke="#e2d9cc"/>
+    <text x="1138" y="81" text-anchor="middle" font-family="'Microsoft YaHei','PingFang SC',sans-serif" font-size="12" fill="#7d6f5c">清空</text>
+
+    <line x1="76" y1="108" x2="1200" y2="108" stroke="#efe9df"/>
+
+    <!-- filter chips -->
+    <rect x="108" y="126" width="54" height="26" rx="13" fill="#f1ece3" stroke="#d9cbb4"/>
+    <text x="135" y="143" text-anchor="middle" font-family="'Microsoft YaHei','PingFang SC',sans-serif" font-size="11.5" fill="#5c4f3f">全部</text>
+    <rect x="170" y="126" width="58" height="26" rx="13" fill="#ffffff" stroke="#e2d9cc"/>
+    <text x="199" y="143" text-anchor="middle" font-family="'Microsoft YaHei','PingFang SC',sans-serif" font-size="11.5" fill="#8a8072">置顶</text>
+
+    <!-- ============ cards, all 168 tall ============ -->
+    <!-- row 1 y=174..342 -->
+    <g filter="url(#n-shadow)">
+      <rect x="108" y="174" width="248" height="168" rx="10" fill="#fdf1d3"/>
+      <rect x="108" y="174" width="248" height="4" rx="2" fill="#e0a92f"/>
+      <!-- edited card shows a focused textarea -->
+      <rect x="124" y="196" width="216" height="30" rx="4" fill="none" stroke="#e0a92f" stroke-width="1.6"/>
+      <text x="132" y="216" font-family="'Microsoft YaHei','PingFang SC',sans-serif" font-size="12" fill="#7a5a12">把海报提示词记下来</text>
+      <rect x="124" y="242" width="180" height="8" rx="4" fill="#7a5a12" opacity="0.32"/>
+      <rect x="124" y="260" width="206" height="8" rx="4" fill="#7a5a12" opacity="0.22"/>
+      <rect x="124" y="278" width="140" height="8" rx="4" fill="#7a5a12" opacity="0.16"/>
+      <text x="124" y="322" font-family="'SF Mono',monospace" font-size="10" fill="#a8895c">11-03 21:26</text>
+      <g transform="translate(318 307) rotate(35)" fill="#7a5a12" opacity="0.92">
+        <rect x="-2" y="0" width="4" height="15" rx="1.6"/>
+        <path d="M-5.5 -1a5.5 5.5 0 0 1 11 0z"/>
+      </g>
+      <text x="334" y="322" font-family="'Microsoft YaHei','PingFang SC',sans-serif" font-size="9.5" fill="#a8895c">置顶</text>
+    </g>
+
+    <g filter="url(#n-shadow)">
+      <rect x="370" y="174" width="248" height="168" rx="10" fill="#ece6f8"/>
+      <rect x="370" y="174" width="248" height="4" rx="2" fill="#6f5bb5"/>
+      <rect x="386" y="198" width="196" height="8" rx="4" fill="#4a3b7d" opacity="0.48"/>
+      <rect x="386" y="216" width="170" height="8" rx="4" fill="#4a3b7d" opacity="0.32"/>
+      <rect x="386" y="234" width="200" height="8" rx="4" fill="#4a3b7d" opacity="0.22"/>
+      <text x="386" y="322" font-family="'SF Mono',monospace" font-size="10" fill="#8b7fb0">11-03 20:04</text>
+      <g transform="translate(544 304)" fill="none" stroke="#9a90b8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M1 11h3l8-8-3-3-8 8z"/>
+      </g>
+      <g transform="translate(566 304)" fill="none" stroke="#9a90b8" stroke-width="1.4" stroke-linecap="round">
+        <path d="M0 2h11M3 2v-2h5v2M4 2l.6 9h5.4l.6-9"/>
+      </g>
+    </g>
+
+    <g filter="url(#n-shadow)">
+      <rect x="632" y="174" width="248" height="168" rx="10" fill="#e3f2e6"/>
+      <rect x="632" y="174" width="248" height="4" rx="2" fill="#4f9160"/>
+      <rect x="648" y="198" width="190" height="8" rx="4" fill="#2f5d38" opacity="0.46"/>
+      <rect x="648" y="216" width="212" height="8" rx="4" fill="#2f5d38" opacity="0.3"/>
+      <text x="648" y="322" font-family="'SF Mono',monospace" font-size="10" fill="#7fa389">11-02 09:41</text>
+    </g>
+
+    <g filter="url(#n-shadow)">
+      <rect x="894" y="174" width="248" height="168" rx="10" fill="#dfeaf6"/>
+      <rect x="894" y="174" width="248" height="4" rx="2" fill="#4d8dc4"/>
+      <rect x="910" y="198" width="204" height="8" rx="4" fill="#1f4c74" opacity="0.46"/>
+      <rect x="910" y="216" width="160" height="8" rx="4" fill="#1f4c74" opacity="0.3"/>
+      <rect x="910" y="234" width="196" height="8" rx="4" fill="#1f4c74" opacity="0.2"/>
+      <rect x="910" y="252" width="120" height="8" rx="4" fill="#1f4c74" opacity="0.15"/>
+      <text x="910" y="322" font-family="'SF Mono',monospace" font-size="10" fill="#7ba0c0">11-01 16:12</text>
+    </g>
+
+    <!-- row 2 y=356..524 -->
+    <g filter="url(#n-shadow)">
+      <rect x="108" y="356" width="248" height="168" rx="10" fill="#fbe6e6"/>
+      <rect x="108" y="356" width="248" height="4" rx="2" fill="#cf7070"/>
+      <rect x="124" y="380" width="196" height="8" rx="4" fill="#7d3b3b" opacity="0.44"/>
+      <rect x="124" y="398" width="168" height="8" rx="4" fill="#7d3b3b" opacity="0.28"/>
+      <text x="124" y="504" font-family="'SF Mono',monospace" font-size="10" fill="#c08484">10-31 14:08</text>
+    </g>
+
+    <g filter="url(#n-shadow)">
+      <rect x="370" y="356" width="248" height="168" rx="10" fill="#efeeec"/>
+      <rect x="370" y="356" width="248" height="4" rx="2" fill="#8a8072"/>
+      <rect x="386" y="380" width="188" height="8" rx="4" fill="#4a443c" opacity="0.4"/>
+      <rect x="386" y="398" width="212" height="8" rx="4" fill="#4a443c" opacity="0.26"/>
+      <rect x="386" y="416" width="132" height="8" rx="4" fill="#4a443c" opacity="0.17"/>
+      <text x="386" y="504" font-family="'SF Mono',monospace" font-size="10" fill="#a39a8c">10-30 10:55</text>
+    </g>
+
+    <!-- composer, same height -->
+    <g>
+      <rect x="632" y="356" width="510" height="168" rx="10" fill="#ffffff" stroke="#d9cbb4" stroke-dasharray="6 5"/>
+      <text x="656" y="392" font-family="'Microsoft YaHei','PingFang SC',sans-serif" font-size="13" fill="#b6a894">写点什么…（Ctrl + Enter 保存，Esc 取消）</text>
+      <g>
+        <circle cx="658" cy="472" r="9" fill="#e7b562"/>
+        <circle cx="684" cy="472" r="9" fill="#cf7070"/>
+        <circle cx="710" cy="472" r="9" fill="#6f5bb5"/>
+        <circle cx="736" cy="472" r="9" fill="#4d8dc4"/>
+        <circle cx="762" cy="472" r="9" fill="#4f9160"/>
+        <circle cx="788" cy="472" r="9" fill="#8a8072"/>
+        <circle cx="658" cy="472" r="12" fill="none" stroke="#1b2430" stroke-width="1.6"/>
+      </g>
+      <rect x="1044" y="457" width="86" height="30" rx="8" fill="#247bbf"/>
+      <text x="1087" y="477" text-anchor="middle" font-family="'Microsoft YaHei','PingFang SC',sans-serif" font-size="12" font-weight="600" fill="#ffffff">存下</text>
+    </g>
+
+    <!-- caption -->
+    <text x="600" y="662" text-anchor="middle" font-family="'Microsoft YaHei','PingFang SC',sans-serif" font-size="12.5" fill="#8a8072">界面示意（非截图）：配色、卡片与控件按插件实际样式绘制</text>
+  </g>
+
+  <rect x="0.5" y="0.5" width="1199" height="699" rx="15.5" fill="none" stroke="#e2d9cc"/>
+</svg>

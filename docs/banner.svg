@@ -1,0 +1,92 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 320" width="1200" height="320" role="img" aria-label="dsh-note-wall 便签墙">
+  <defs>
+    <linearGradient id="banner-bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fdfaf3"/>
+      <stop offset="1" stop-color="#f6ecdc"/>
+    </linearGradient>
+    <linearGradient id="card-amber" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffe9b3"/>
+      <stop offset="1" stop-color="#fbd98a"/>
+    </linearGradient>
+    <linearGradient id="card-rose" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#fbd9d9"/>
+      <stop offset="1" stop-color="#f4bfbf"/>
+    </linearGradient>
+    <linearGradient id="card-sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d7e8f7"/>
+      <stop offset="1" stop-color="#b9d6ef"/>
+    </linearGradient>
+    <filter id="card-shadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="5" stdDeviation="7" flood-color="#8a6d3b" flood-opacity="0.18"/>
+    </filter>
+    <clipPath id="banner-clip">
+      <rect width="1200" height="320" rx="24"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#banner-clip)">
+    <rect width="1200" height="320" fill="url(#banner-bg)"/>
+
+    <!-- faint paper dots -->
+    <g fill="#d9c9ad" opacity="0.45">
+      <circle cx="150" cy="270" r="2"/><circle cx="980" cy="52" r="2"/><circle cx="1120" cy="286" r="2"/>
+      <circle cx="700" cy="290" r="2"/><circle cx="420" cy="292" r="2"/>
+    </g>
+
+    <!-- note cards, right side, kept well inside the frame -->
+    <g filter="url(#card-shadow)">
+      <g transform="rotate(-8 900 168)">
+        <rect x="812" y="96" width="132" height="132" rx="12" fill="url(#card-sky)"/>
+        <rect x="812" y="96" width="132" height="6" rx="3" fill="#7fb3dd"/>
+        <rect x="828" y="122" width="92" height="6" rx="3" fill="#3d6c93" opacity="0.55"/>
+        <rect x="828" y="138" width="102" height="6" rx="3" fill="#3d6c93" opacity="0.38"/>
+        <rect x="828" y="154" width="64" height="6" rx="3" fill="#3d6c93" opacity="0.28"/>
+      </g>
+      <g transform="rotate(4 962 150)">
+        <rect x="896" y="72" width="142" height="142" rx="12" fill="url(#card-amber)"/>
+        <rect x="896" y="72" width="142" height="6" rx="3" fill="#e0a92f"/>
+        <rect x="912" y="100" width="100" height="6" rx="3" fill="#7a5a12" opacity="0.6"/>
+        <rect x="912" y="116" width="112" height="6" rx="3" fill="#7a5a12" opacity="0.42"/>
+        <rect x="912" y="132" width="82" height="6" rx="3" fill="#7a5a12" opacity="0.32"/>
+        <circle cx="1008" cy="184" r="8" fill="#7a5a12" opacity="0.26"/>
+      </g>
+      <g transform="rotate(12 1082 190)">
+        <rect x="1038" y="118" width="116" height="116" rx="12" fill="url(#card-rose)"/>
+        <rect x="1038" y="118" width="116" height="6" rx="3" fill="#d98a8a"/>
+        <rect x="1052" y="142" width="76" height="6" rx="3" fill="#7d3b3b" opacity="0.5"/>
+        <rect x="1052" y="158" width="88" height="6" rx="3" fill="#7d3b3b" opacity="0.34"/>
+      </g>
+    </g>
+
+    <!-- icon block -->
+    <g transform="translate(72 62)">
+      <rect x="0" y="0" width="88" height="88" rx="20" fill="#1b2430"/>
+      <g transform="translate(14 14) scale(0.9375)">
+        <path d="M17 15h26l9 11v24a3 3 0 0 1-3 3H17a3 3 0 0 1-3-3V18a3 3 0 0 1 3-3z" fill="url(#card-amber)"/>
+        <path d="M43 15l9 11h-9z" fill="#c9902a"/>
+        <rect x="22" y="26" width="17" height="3" rx="1.5" fill="#7a5a12" opacity="0.85"/>
+        <rect x="22" y="33" width="21" height="3" rx="1.5" fill="#7a5a12" opacity="0.62"/>
+        <rect x="22" y="40" width="13" height="3" rx="1.5" fill="#7a5a12" opacity="0.42"/>
+        <circle cx="45" cy="44" r="7" fill="#247bbf"/>
+        <path d="M45 40.4v7.2M41.4 44h7.2" stroke="#fff" stroke-width="2.1" stroke-linecap="round"/>
+      </g>
+    </g>
+
+    <!-- wordmark -->
+    <text x="190" y="108" font-family="'SF Mono','Cascadia Code',Consolas,Menlo,monospace" font-size="44" font-weight="700" fill="#1b2430">dsh-note-wall</text>
+    <text x="190" y="156" font-family="'Microsoft YaHei','PingFang SC','Hiragino Sans GB',sans-serif" font-size="29" font-weight="600" fill="#4a3f31">便签墙 · 随手记下灵感</text>
+    <text x="192" y="196" font-family="'Microsoft YaHei','PingFang SC','Hiragino Sans GB',sans-serif" font-size="16" fill="#7d6f5c">左侧栏一个入口，一页纸给你那些不想弄丢的念头；便签就是本机上的普通 JSON。</text>
+
+    <!-- pills -->
+    <g font-family="'Microsoft YaHei','PingFang SC','Hiragino Sans GB',sans-serif" font-size="13.5">
+      <rect x="192" y="222" width="128" height="30" rx="15" fill="#ffffff" stroke="#e2d5bd"/>
+      <text x="256" y="242" text-anchor="middle" fill="#5c4f3f">无需构建</text>
+      <rect x="332" y="222" width="146" height="30" rx="15" fill="#ffffff" stroke="#e2d5bd"/>
+      <text x="405" y="242" text-anchor="middle" fill="#5c4f3f">本地 JSON 存储</text>
+      <rect x="490" y="222" width="128" height="30" rx="15" fill="#ffffff" stroke="#e2d5bd"/>
+      <text x="554" y="242" text-anchor="middle" fill="#5c4f3f">零依赖</text>
+    </g>
+  </g>
+
+  <rect x="0.5" y="0.5" width="1199" height="319" rx="23.5" fill="none" stroke="#e8dcc6"/>
+</svg>

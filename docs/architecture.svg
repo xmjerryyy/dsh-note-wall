@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 600" width="1100" height="600" role="img" aria-label="dsh-note-wall 架构图：浏览器半与宿主半">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8a7a63"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#247bbf"/>
+    </marker>
+  </defs>
+
+  <rect width="1100" height="600" rx="20" fill="#fdfbf7"/>
+  <rect x="0.5" y="0.5" width="1099" height="599" rx="19.5" fill="none" stroke="#e8dcc6"/>
+
+  <text x="60" y="54" font-family="'Microsoft YaHei','PingFang SC',sans-serif" font-size="22" font-weight="700" fill="#1b2430">两侧怎么通信</text>
+  <text x="60" y="80" font-family="'Microsoft YaHei','PingFang SC',sans-serif" font-size="14" fill="#7d6f5c">没有新造存储服务，只有一条精确 HTTP 路由和一份磁盘文件。</text>
+
+  <!-- ================= browser column ================= -->
+  <rect x="60" y="110" width="440" height="300" rx="14" fill="#eef4fb" stroke="#c5d8ec"/>
+  <text x="82" y="140" font-family="'Microsoft YaHei','PingFang SC',sans-serif" font-size="15" font-weight="700" fill="#1f4c74">浏览器半 · client.js</text>
+  <text x="82" y="162" font-family="'Microsoft YaHei','PingFang SC',sans-serif" font-size="12" fill="#5b7b99">在 Web 页面里跑，React 组件</text>
+
+  <rect x="82" y="180" width="190" height="66" rx="9" fill="#ffffff" stroke="#c5d8ec"/>
+  <text x="98" y="206" font-family="'Microsoft YaHei','PingFang SC',sans-serif" font-size="13" font-weight="600" fill="#1b2430">侧栏图标</text>
+  <text x="98" y="228" font-family="'SF Mono','Cascadia Code',Consolas,monospace" font-size="11" fill="#5b7b99">sidebar.panellist</text>
+
+  <rect x="290" y="180" width="190" height="66" rx="9" fill="#ffffff" stroke="#c5d8ec"/>
+  <text x="306" y="206" font-family="'Microsoft YaHei','PingFang SC',sans-serif" font-size="13" font-weight="600" fill="#1b2430">便签墙页面</text>
+  <text x="306" y="228" font-family="'SF Mono','Cascadia Code',Consolas,monospace" font-size="11" fill="#5b7b99">main · note-wall</text>
+
+  <rect x="82" y="264" width="398" height="56" rx="9" fill="#ffffff" stroke="#c5d8ec"/>
+  <text x="98" y="288" font-family="'Microsoft YaHei','PingFang SC',sans-serif" font-size="13" font-weight="600" fill="#1b2430">只保留一份状态</text>
+  <text x="98" y="308" font-family="'Microsoft YaHei','PingFang SC',sans-serif" font-size="11.5" fill="#5b7b99">不在浏览器里留本地副本，刷新/多标签/agent 看到的是同一份</text>
+
+  <rect x="82" y="336" width="398" height="54" rx="9" fill="#dbeafe" stroke="#a9c8e6"/>
+  <text x="98" y="359" font-family="'SF Mono','Cascadia Code',Consolas,monospace" font-size="11.5" fill="#1f4c74">connection.rpc.call(</text>
+  <text x="98" y="377" font-family="'SF Mono','Cascadia Code',Consolas,monospace" font-size="11.5" fill="#1f4c74">  '/api', 'dsh-note-wall', { method, payload })</text>
+
+  <!-- ================= transport ================= -->
+  <line x1="256" y1="392" x2="256" y2="432" stroke="#247bbf" stroke-width="2" marker-end="url(#arrow-blue)"/>
+  <line x1="276" y1="432" x2="276" y2="392" stroke="#8a7a63" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#arrow)"/>
+  <text x="300" y="410" font-family="'SF Mono','Cascadia Code',Consolas,monospace" font-size="12" fill="#247bbf">POST /api/dsh-note-wall</text>
+  <text x="300" y="430" font-family="'SF Mono','Cascadia Code',Consolas,monospace" font-size="11" fill="#8a7a63">{ type: 'server-response', rpcId, result }</text>
+
+  <!-- ================= host column ================= -->
+  <rect x="600" y="110" width="440" height="300" rx="14" fill="#fdf6e9" stroke="#e6d5b6"/>
+  <text x="622" y="140" font-family="'Microsoft YaHei','PingFang SC',sans-serif" font-size="15" font-weight="700" fill="#7a5a12">宿主半 · index.js</text>
+  <text x="622" y="162" font-family="'Microsoft YaHei','PingFang SC',sans-serif" font-size="12" fill="#98814f">在 Node 进程里跑</text>
+
+  <rect x="622" y="180" width="190" height="66" rx="9" fill="#ffffff" stroke="#e6d5b6"/>
+  <text x="638" y="206" font-family="'Microsoft YaHei','PingFang SC',sans-serif" font-size="13" font-weight="600" fill="#1b2430">精确路由</text>
+  <text x="638" y="228" font-family="'SF Mono','Cascadia Code',Consolas,monospace" font-size="10.5" fill="#98814f">connection.fetch.register</text>
+
+  <rect x="830" y="180" width="190" height="66" rx="9" fill="#ffffff" stroke="#e6d5b6"/>
+  <text x="846" y="206" font-family="'Microsoft YaHei','PingFang SC',sans-serif" font-size="13" font-weight="600" fill="#1b2430">agent 工具</text>
+  <text x="846" y="228" font-family="'SF Mono','Cascadia Code',Consolas,monospace" font-size="11" fill="#98814f">note_wall</text>
+
+  <rect x="622" y="264" width="398" height="56" rx="9" fill="#ffffff" stroke="#e6d5b6"/>
+  <text x="638" y="288" font-family="'Microsoft YaHei','PingFang SC',sans-serif" font-size="13" font-weight="600" fill="#1b2430">原子写入</text>
+  <text x="638" y="308" font-family="'Microsoft YaHei','PingFang SC',sans-serif" font-size="11.5" fill="#98814f">临时文件 + rename，写到一半崩溃也不会截断</text>
+
+  <rect x="622" y="336" width="398" height="54" rx="9" fill="#fbeecb" stroke="#e0c894"/>
+  <text x="638" y="359" font-family="'SF Mono','Cascadia Code',Consolas,monospace" font-size="11.5" fill="#7a5a12">&lt;DSH_HOME&gt;/note-wall/notes.json</text>
+  <text x="638" y="377" font-family="'Microsoft YaHei','PingFang SC',sans-serif" font-size="11.5" fill="#98814f">你磁盘上的普通 JSON，删插件也不碰它</text>
+
+  <!-- ================= bottom: agent + storage ================= -->
+  <rect x="60" y="440" width="440" height="120" rx="14" fill="#f4f7f4" stroke="#cfe0cf"/>
+  <text x="82" y="468" font-family="'Microsoft YaHei','PingFang SC',sans-serif" font-size="14" font-weight="700" fill="#2f5d38">你也可以直接说</text>
+  <text x="82" y="494" font-family="'Microsoft YaHei','PingFang SC',sans-serif" font-size="13" fill="#1b2430">「把这句记到便签墙上」</text>
+  <text x="82" y="518" font-family="'Microsoft YaHei','PingFang SC',sans-serif" font-size="12" fill="#5b7b60">模型通过 note_wall 工具读写同一份数据 →</text>
+  <text x="82" y="540" font-family="'SF Mono','Cascadia Code',Consolas,monospace" font-size="11" fill="#5b7b60">list / add / update / remove / clear</text>
+
+  <rect x="600" y="440" width="440" height="120" rx="14" fill="#fdfbf7" stroke="#e8dcc6"/>
+  <text x="622" y="468" font-family="'Microsoft YaHei','PingFang SC',sans-serif" font-size="14" font-weight="700" fill="#4a3f31">文件坏了怎么办</text>
+  <text x="622" y="494" font-family="'Microsoft YaHei','PingFang SC',sans-serif" font-size="12.5" fill="#1b2430">坏文件不会让面板打不开</text>
+  <text x="622" y="516" font-family="'SF Mono','Cascadia Code',Consolas,monospace" font-size="11" fill="#8a7a63">notes.json.corrupt-&lt;时间戳&gt;</text>
+  <text x="622" y="540" font-family="'Microsoft YaHei','PingFang SC',sans-serif" font-size="12" fill="#7d6f5c">字节留着供你排查，墙从空状态继续</text>
+
+  <text x="550" y="586" text-anchor="middle" font-family="'Microsoft YaHei','PingFang SC',sans-serif" font-size="12" fill="#a89880">dsh-note-wall · 架构示意</text>
+</svg>

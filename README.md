@@ -1,68 +1,84 @@
-# dsh-note-wall
+<div align="center">
 
-**English** | [简体中文](README.zh-CN.md)
+<img src="docs/banner.svg" alt="dsh-note-wall 便签墙" width="100%">
 
-A sticky-note wall for the [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) web GUI:
-one icon in the left rail, one page for the ideas you do not want to lose.
+# 便签墙 · dsh-note-wall
 
-Notes are plain JSON on your own disk. No account, no sync, no network.
+**给 DeepSeek Harness 加一面便签墙：左侧栏一个入口，一页纸给你那些不想弄丢的念头。**
 
-## What it does
+便签就是你自己磁盘上的普通 JSON。不要账号、不同步、不联网。
 
-- **A sidebar entry.** A note icon sits in the left rail next to the built-in panels. Click it and the
-  main column switches to the wall.
-- **A wall of notes.** Cards lay out in a responsive grid. Each note carries its own colour, timestamp
-  and controls.
-- **Write one fast.** Press *New note*, type, then `Ctrl + Enter` to save (or `Esc` to cancel).
-- **Keep the wall usable.** Pin, recolour (6 colours), edit, delete, search, filter to pinned only,
-  and clear the whole wall behind a two-step confirmation.
-- **An agent tool.** The Host half also registers a `note_wall` tool, so you can ask the model to read
-  or write the wall directly ("jot this down as a note").
+[![powered by dsh](https://img.shields.io/badge/powered_by-dsh-4D6BFE?style=flat-square&logo=deepseek&logoColor=white)](https://github.com/deepseek-ai/deepseek-harness)
+[![license](https://img.shields.io/badge/license-MIT-3da639?style=flat-square)](LICENSE)
+[![dependencies](https://img.shields.io/badge/dependencies-none-4c9aff?style=flat-square)](#)
+[![build](https://img.shields.io/badge/build-not%20required-8a8072?style=flat-square)](#)
 
-## Where notes live
+**[简体中文](README.md)** · [English](README.en.md)
+
+</div>
+
+---
+
+<img src="docs/preview.svg" alt="界面示意：左侧栏便签入口与便签墙页面" width="100%">
+
+## 它做什么
+
+- **左侧栏入口。** 便签图标和内置面板并排待在左栏，点一下主区域就切到便签墙。
+- **一面便签墙。** 卡片按自适应网格铺开，每张有自己的颜色、时间和操作按钮。
+- **快速记一条。** 点「新便签」，写完按 `Ctrl + Enter` 存下（`Esc` 取消）。
+- **让墙一直好用。** 置顶、改色（6 种）、编辑、删除、搜索、只看置顶，以及需要二次确认的清空。
+- **给 agent 的工具。** 宿主半还注册了 `note_wall` 工具，所以你可以直接让模型读写这面墙
+  （「把这句记到便签墙上」）。
+
+## 安装
+
+这是一个纯 bundle——两个 JS 文件，**没有构建步骤**，也**没有依赖**。
+
+```powershell
+# 通过插件管理器
+#   action: install_bundle
+#   target: 本目录的绝对路径
+```
+
+装完 **重启一次 DSH**。浏览器半会通过 HMR 立刻激活，但宿主半（路由 + 工具）是 Node 模块，
+运行中的进程会继续用它已经加载的那份。
+
+之后：
+
+| 改了什么 | 怎么看到 |
+|---|---|
+| `client.js` | 刷新页面 |
+| `index.js`（路由、工具、存储） | 重启 DSH |
+
+### 依赖
+
+- 带 Web GUI 的 DeepSeek Harness（`@deepseek-ai/dsh-web-app`）。
+- 宿主服务 `connection` 与 `tools`——默认的 `dsh-base` / `dsh-web-app` 组合里都自带。
+
+## 便签存在哪
 
 ```
 <DSH_HOME>/note-wall/notes.json
 ```
 
-- A single JSON document, written atomically (temp file + `rename`), so a crash mid-write cannot
-  truncate the wall.
-- A corrupt file does not brick the panel: the bytes are moved aside to
-  `notes.json.corrupt-<timestamp>` and the wall starts empty instead of throwing on every open.
-- Bounded at 2000 notes, 10000 characters each.
-- **Deleting or upgrading the plugin never touches your notes.** Remove the plugin and the file stays.
+- 单个 JSON 文档，**原子写入**（临时文件 + `rename`），写到一半崩溃也不会截断。
+- 文件坏了不会让面板打不开：字节会被挪到 `notes.json.corrupt-<时间戳>` 留证，
+  墙从空状态开始，而不是每次打开都抛错。
+- 上限 2000 条、单条 10000 字。
+- **删插件、升级插件都不会碰你的便签。** 卸载插件，文件还在。
 
-## Install
+## 两侧怎么通信
 
-The plugin is a plain bundle — two JavaScript files, no build step.
+<img src="docs/architecture.svg" alt="架构图：浏览器半与宿主半、一条精确路由、一份磁盘文件" width="100%">
 
-```powershell
-# via the plugin manager
-#   action: install_bundle
-#   target: <absolute path to this directory>
-```
-
-Then **restart DSH once**. The browser half activates immediately through HMR, but the Host half
-(route + tool) is a Node module, and a running process keeps the copy it already loaded.
-
-After that, editing `client.js` only needs a page refresh; editing `index.js` needs another restart.
-
-### Requirements
-
-- DeepSeek Harness with the Web GUI (`@deepseek-ai/dsh-web-app`).
-- The `connection` and `tools` Host services — both ship with the default `dsh-base` / `dsh-web-app`
-  composition.
-
-## How the two halves talk
-
-No new storage service, no session-event hacking. The browser half calls the Host half over the
-harness's own connection dialect — the same one `dsh-context` and `dsh-opencode-palette` use:
+没有新造存储服务，也没有往会话事件里塞东西。浏览器半用宿主自己的连接方言调宿主半，
+和 `dsh-context`、`dsh-opencode-palette` 是同一套：
 
 ```js
 connection.rpc.call('/api', 'dsh-note-wall', { method, payload })
 ```
 
-The Host half catches it with one exact route:
+宿主半用一条精确路由接住：
 
 ```js
 connection.fetch.register({
@@ -73,51 +89,53 @@ connection.fetch.register({
 })
 ```
 
-and answers `{ type: 'server-response', rpcId, result }`.
+回 `{ type: 'server-response', rpcId, result }`。
 
-There is exactly one source of truth. The browser keeps no local copy, so a refresh, a second tab, and
-the agent all see the same notes.
+只有一份真源。浏览器里不留本地副本，所以刷新、开第二个标签页、agent 改便签，看到的是同一份。
 
-## Files
+## 文件
 
-| File | What it is |
+| 文件 | 是什么 |
 |---|---|
-| `index.js` | Host half: the exact route, the `note_wall` tool, atomic persistence |
-| `client.js` | Browser half: the rail icon and the wall page |
-| `cordis.patch.yml` | Bundle patch — inserts the plugin row |
-| `package.json` | Manifest, including the `dsh.client` declaration |
-| `locale/en.json`, `locale/zh.json` | Display title and description for the plugin manager |
-| `icon.svg` | Original icon |
+| `index.js` | 宿主半：精确路由、`note_wall` 工具、原子落盘 |
+| `client.js` | 浏览器半：侧栏图标与便签墙页面 |
+| `cordis.patch.yml` | bundle 补丁，插入插件行 |
+| `package.json` | 清单，含 `dsh.client` 声明 |
+| `locale/en.json`、`locale/zh.json` | 插件管理页显示的标题与描述 |
+| `icon.svg` | 原创图标 |
+| `docs/*.svg` | 本文用图（全部是原创矢量图） |
 
-### Styling
+### 样式
 
-The stylesheet uses only `--dsw-alias-*` theme tokens. Card tints are `color-mix` over an accent token
-on top of `bg-layer-1`, so light and dark themes both work without a second palette. Every class name
-is prefixed `nw-`, and the layout follows the harness's own management pages (a full-height scrolling
-root, layer-1 cards, 13px body).
+样式表只用 `--dsw-alias-*` 主题 token。卡片底色是 `color-mix` 叠在 `bg-layer-1` 上，
+浅色和深色主题都不用另配一套色板。所有类名带 `nw-` 前缀，布局对齐宿主自己的管理页
+（100% 高度的滚动根、layer-1 卡片、13px 正文）。
 
-## What has been verified
+## 验证到哪一步
 
-- **Host half.** 23 assertions across three Host shapes: a normal one, one where the injected-service
-  probe races to `undefined`, and one with no Fetch carrier at all. Covers route registration, tool
-  registration, create/update/pin/recolour/delete/clear, pin-only updates keeping the body, oversized
-  input clamping, unknown-method rejection, on-disk persistence, corrupt-file recovery, and teardown.
-- **Browser half.** The bundle was evaluated against the shell's module-loader contract and rendered
-  through `react-dom/server`: both slots register, the icon is a real `<svg>`, cards render with their
-  tints, and every class used in the markup exists in the stylesheet.
-- **Live.** The route answered and wrote a real note to disk; both slots (`sidebar.panellist` and
-  `main`) show this plugin as an active occupant.
+- **宿主半。** 三种宿主形态下共 23 条断言：正常的、注入服务探测会竞态返回 `undefined` 的、
+  以及完全没有 Fetch 载体的。覆盖路由注册、工具注册、增删改查与置顶改色、只改置顶不丢正文、
+  超长输入截断、未知方法拒绝、落盘、坏文件恢复、卸载清理。
+- **浏览器半。** bundle 按 shell 的模块加载契约求值，并用 `react-dom/server` 渲染：
+  两个槽位都注册成功、图标是真的 `<svg>`、卡片带着各自底色渲染出来、
+  markup 里用到的每个 class 都存在于样式表中。
+- **实际运行。** 路由应答并把真实便签写进了磁盘；两个槽位
+  （`sidebar.panellist` 与 `main`）都显示本插件是活跃占位者。
 
-**Not verified:** the rendered appearance in a real browser. There is no screenshot in this repository
-for that reason.
+> **关于上面那张界面图：** 它是按插件实际配色与控件绘制的**矢量示意图**，不是浏览器截图。
+> 我不宣称拥有真实观感的截图证据，所以不放伪造的截图。
 
-## Uninstall
+## 卸载
 
-Remove the bundle through the plugin manager, then restart. Your notes stay at
-`<DSH_HOME>/note-wall/`; delete that directory yourself to remove them.
+通过插件管理器移除 bundle，然后重启。便签仍留在 `<DSH_HOME>/note-wall/`，
+想一并删掉就自己删那个目录。
 
-## License
+## 许可
 
-MIT — see [LICENSE](LICENSE).
+MIT —— 见 [LICENSE](LICENSE)。
+
+<div align="center">
 
 [![](https://img.shields.io/badge/powered_by-dsh-4D6BFE?style=flat-square&logo=deepseek&logoColor=white)](https://github.com/deepseek-ai/deepseek-harness)
+
+</div>
