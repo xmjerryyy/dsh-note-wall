@@ -1,0 +1,58 @@
+{
+  "name": "dsh-note-wall",
+  "version": "0.1.0",
+  "description": "Sticky-note wall for the DeepSeek Harness web GUI: a sidebar entry, a note wall page, local JSON storage, and a note_wall agent tool. 便签墙：左侧栏入口 + 灵感便签页，随时记下想法，本地保存。",
+  "type": "module",
+  "license": "MIT",
+  "author": "xmjerryyy",
+  "homepage": "https://github.com/xmjerryyy/dsh-note-wall#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xmjerryyy/dsh-note-wall.git"
+  },
+  "bugs": {
+    "url": "https://github.com/xmjerryyy/dsh-note-wall/issues"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "cordis",
+    "plugin",
+    "notes",
+    "sticky-notes",
+    "notepad",
+    "ui"
+  ],
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "README.md",
+    "README.zh-CN.md",
+    "LICENSE"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-connection"
+      ]
+    }
+  }
+}

@@ -1,0 +1,6 @@
+# Normalize line endings so the published package is byte-stable across platforms.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.webp binary

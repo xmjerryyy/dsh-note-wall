@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Note Wall">
+  <defs>
+    <linearGradient id="nw-paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffd979"/>
+      <stop offset="1" stop-color="#f4b942"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="13" fill="#1b2430"/>
+  <path d="M17 15h26l9 11v24a3 3 0 0 1-3 3H17a3 3 0 0 1-3-3V18a3 3 0 0 1 3-3z" fill="url(#nw-paper)"/>
+  <path d="M43 15l9 11h-9z" fill="#c9902a"/>
+  <rect x="22" y="26" width="17" height="3" rx="1.5" fill="#7a5a12" opacity="0.85"/>
+  <rect x="22" y="33" width="21" height="3" rx="1.5" fill="#7a5a12" opacity="0.62"/>
+  <rect x="22" y="40" width="13" height="3" rx="1.5" fill="#7a5a12" opacity="0.42"/>
+  <circle cx="45" cy="44" r="7" fill="#247bbf"/>
+  <path d="M45 40.4v7.2M41.4 44h7.2" stroke="#fff" stroke-width="2.1" stroke-linecap="round"/>
+</svg>

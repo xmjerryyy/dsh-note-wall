@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Editor and OS noise
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+
+# Local scratch — verification scripts are not part of the package
+_*.mjs
+_*.cjs
+_tmp/

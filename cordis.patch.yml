@@ -1,0 +1,7 @@
+# Bundle patch layer for dsh-note-wall.
+# The row loads the package main entry as the Host half; the `dsh.client`
+# declaration in package.json makes the Web app load `./client` as the browser
+# half (sidebar entry + note wall page).
+- insert:
+    - id: dsh-note-wall
+      name: 'dsh-note-wall'
